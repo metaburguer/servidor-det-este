@@ -74,9 +74,32 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }, 1000);
 
-    // Se redirecionamento for detectado, avisa
     if (redirDetectado) alert("Tentativa de redirecionamento bloqueada!");
   };
 
   bloquearRedirects();
+
+  // 🍔🌭 Chuva de hambúrgueres e hotdogs
+  const rainContainer = document.createElement("div");
+  rainContainer.id = "rain-container";
+  document.body.appendChild(rainContainer);
+
+  const lanches = ["🌭", "🍔"];
+  function criarLanche() {
+    const item = document.createElement("div");
+    item.classList.add("rain-item");
+    item.innerText = lanches[Math.floor(Math.random() * lanches.length)];
+    item.style.left = Math.random() * 100 + "vw";
+    item.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    item.style.fontSize = (Math.random() * 15 + 20) + "px";
+    rainContainer.appendChild(item);
+
+    // Remover depois que cair
+    setTimeout(() => {
+      item.remove();
+    }, 5000);
+  }
+
+  // Criar vários com intervalo
+  setInterval(criarLanche, 300);
 });
