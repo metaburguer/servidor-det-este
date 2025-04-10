@@ -25,13 +25,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Botão WhatsApp animação
+  // Botão WhatsApp animação e iniciar chuva
   const zap = document.querySelector(".zap-button");
+  let chuvaAtiva = false;
   zap.addEventListener("click", () => {
     zap.textContent = "Abrindo WhatsApp...";
     setTimeout(() => {
       zap.textContent = "Peça pelo WhatsApp";
     }, 3000);
+
+    if (!chuvaAtiva) {
+      iniciarChuva();
+      chuvaAtiva = true;
+    }
   });
 
   // 🛡️ Proteção contra redirecionamento automático
@@ -75,43 +81,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
   bloquearRedirects();
 
-  // 🍔🌭 Chuva de imagens 'caca' e 'haha'
-  const rainContainer = document.createElement("div");
-  rainContainer.style.position = "fixed";
-  rainContainer.style.top = 0;
-  rainContainer.style.left = 0;
-  rainContainer.style.width = "100%";
-  rainContainer.style.height = "100%";
-  rainContainer.style.pointerEvents = "none";
-  rainContainer.style.zIndex = 999;
-  document.body.appendChild(rainContainer);
+  // 🌧️ Função para iniciar a chuva
+  function iniciarChuva() {
+    const rainContainer = document.createElement("div");
+    rainContainer.style.position = "fixed";
+    rainContainer.style.top = 0;
+    rainContainer.style.left = 0;
+    rainContainer.style.width = "100%";
+    rainContainer.style.height = "100%";
+    rainContainer.style.pointerEvents = "none";
+    rainContainer.style.zIndex = 999;
+    document.body.appendChild(rainContainer);
 
-  const imagens = ["caca.png", "haha.png"];
+    const imagens = ["caca.png", "haha.png"];
 
-  function criarLanche() {
-    const img = document.createElement("img");
-    const item = imagens[Math.floor(Math.random() * imagens.length)];
-    img.src = `imagens/${item}`;
-    img.alt = item === "caca.png" ? "Cachorro-quente" : "Hambúrguer";
-    img.style.position = "absolute";
-    img.style.left = Math.random() * 100 + "vw";
-    img.style.top = "-50px";
-    img.style.width = "39px"; // ← diminuído de 40 para 39
-    img.style.opacity = "0.9";
-    img.style.transition = "transform 5s linear, top 5s linear";
-    img.style.zIndex = 999;
+    function criarLanche() {
+      const img = document.createElement("img");
+      const item = imagens[Math.floor(Math.random() * imagens.length)];
+      img.src = `imagens/${item}`;
+      img.alt = item === "caca.png" ? "Cachorro-quente" : "Hambúrguer";
+      img.style.position = "absolute";
+      img.style.left = Math.random() * 100 + "vw";
+      img.style.top = "-50px";
+      img.style.width = "39px";
+      img.style.opacity = "0.9";
+      img.style.transition = "transform 5s linear, top 5s linear";
+      img.style.zIndex = 999;
 
-    rainContainer.appendChild(img);
+      rainContainer.appendChild(img);
 
-    setTimeout(() => {
-      img.style.top = "110%";
-      img.style.transform = `rotate(${Math.random() * 360}deg)`;
-    }, 50);
+      setTimeout(() => {
+        img.style.top = "110%";
+        img.style.transform = `rotate(${Math.random() * 360}deg)`;
+      }, 50);
 
-    setTimeout(() => {
-      img.remove();
-    }, 6000);
+      setTimeout(() => {
+        img.remove();
+      }, 6000);
+    }
+
+    setInterval(criarLanche, 400);
   }
-
-  setInterval(criarLanche, 400);
 });
