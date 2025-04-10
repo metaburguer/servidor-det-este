@@ -79,27 +79,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
   bloquearRedirects();
 
-  // 🍔🌭 Chuva de hambúrgueres e hotdogs
+  // 🍔🌭 Chuva de imagens 'caca' e 'haha'
   const rainContainer = document.createElement("div");
-  rainContainer.id = "rain-container";
+  rainContainer.style.position = "fixed";
+  rainContainer.style.top = 0;
+  rainContainer.style.left = 0;
+  rainContainer.style.width = "100%";
+  rainContainer.style.height = "100%";
+  rainContainer.style.pointerEvents = "none";
+  rainContainer.style.zIndex = 999;
   document.body.appendChild(rainContainer);
 
-  const lanches = ["🌭", "🍔"];
-  function criarLanche() {
-    const item = document.createElement("div");
-    item.classList.add("rain-item");
-    item.innerText = lanches[Math.floor(Math.random() * lanches.length)];
-    item.style.left = Math.random() * 100 + "vw";
-    item.style.animationDuration = (Math.random() * 3 + 2) + "s";
-    item.style.fontSize = (Math.random() * 15 + 20) + "px";
-    rainContainer.appendChild(item);
+  const imagens = ["caca.png", "haha.png"]; // 🌭 = caca.png | 🍔 = haha.png
 
-    // Remover depois que cair
+  function criarLanche() {
+    const img = document.createElement("img");
+    const item = imagens[Math.floor(Math.random() * imagens.length)];
+    img.src = `imagens/${item}`;
+    img.alt = item === "caca.png" ? "Cachorro-quente" : "Hambúrguer";
+    img.style.position = "absolute";
+    img.style.left = Math.random() * 100 + "vw";
+    img.style.top = "-50px";
+    img.style.width = "40px";
+    img.style.opacity = "0.9";
+    img.style.transition = "transform 5s linear, top 5s linear";
+    img.style.zIndex = 999;
+
+    rainContainer.appendChild(img);
+
     setTimeout(() => {
-      item.remove();
-    }, 5000);
+      img.style.top = "110%";
+      img.style.transform = `rotate(${Math.random() * 360}deg)`;
+    }, 50);
+
+    setTimeout(() => {
+      img.remove();
+    }, 6000);
   }
 
-  // Criar vários com intervalo
-  setInterval(criarLanche, 300);
+  setInterval(criarLanche, 400);
 });
