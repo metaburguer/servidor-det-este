@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const bloquearRedirects = () => {
     let redirDetectado = false;
 
-    // Bloquear alteração de location
     Object.defineProperty(window, 'location', {
       set(value) {
         redirDetectado = true;
@@ -46,14 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Bloquear window.open
     window.open = function () {
       redirDetectado = true;
       console.warn("Tentativa de abrir janela bloqueada.");
       return null;
     };
 
-    // Monitorar setTimeout suspeitos
     const originalTimeout = window.setTimeout;
     window.setTimeout = function (fn, delay) {
       if (typeof fn === "string" && (fn.includes("location") || fn.includes("open"))) {
@@ -64,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return originalTimeout(fn, delay);
     };
 
-    // Remover iframes suspeitos
     setInterval(() => {
       document.querySelectorAll("iframe").forEach(iframe => {
         if (!iframe.src.includes("trusted") && !iframe.src.includes("youtube")) {
@@ -90,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
   rainContainer.style.zIndex = 999;
   document.body.appendChild(rainContainer);
 
-  const imagens = ["caca.png", "haha.png"]; // 🌭 = caca.png | 🍔 = haha.png
+  const imagens = ["caca.png", "haha.png"];
 
   function criarLanche() {
     const img = document.createElement("img");
@@ -100,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     img.style.position = "absolute";
     img.style.left = Math.random() * 100 + "vw";
     img.style.top = "-50px";
-    img.style.width = "40px";
+    img.style.width = "39px"; // ← diminuído de 40 para 39
     img.style.opacity = "0.9";
     img.style.transition = "transform 5s linear, top 5s linear";
     img.style.zIndex = 999;
