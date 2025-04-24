@@ -1,5 +1,5 @@
 // JUNÇÃO FUNCIONAL DO SCRIPT PRINCIPAL COM CONTROLE DE ETAPAS
-
+document.addEventListener('DOMContentLoaded', () => {
 let carrinho = [];
 let adicionaisPorLanche = {};
 const precosAdicionais = {
@@ -136,3 +136,4 @@ function finalizarPedido() {
 }
 
 document.getElementById('finalizar').addEventListener('click', finalizarPedido);
+});
