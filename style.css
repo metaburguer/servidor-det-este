@@ -1,136 +1,294 @@
-/* style.css */
-* {
+/* Estilo geral do corpo */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: #fff;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #1a1a1a;
-  color: #fff;
-  line-height: 1.6;
-}
-
+/* Cabeçalho */
 header {
-  background: linear-gradient(45deg, #ffcc00, #ffaa00);
-  color: #000;
+  background-color: #000;
   padding: 20px;
-  position: relative;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  color: #FFD700;
 }
 
-.menu-icon {
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  width: 30px;
-  cursor: pointer;
-  z-index: 1000;
+/* Container principal para flexbox */
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+  gap: 20px;
 }
 
-.menu-icon span {
+main {
+  flex: 2;
+}
+
+aside {
+  flex: 1;
+  background-color: #1c1c1c;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #FFD700;
+}
+
+/* Estilo de títulos */
+h2, h3 {
+  color: #FFD700;
+}
+
+/* Estilo para as etapas de navegação */
+.etapa {
+  margin-bottom: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Estilo para os inputs, selects e botões */
+input, select, button {
   display: block;
-  height: 4px;
-  background: #000;
-  margin: 6px 0;
-  border-radius: 2px;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
 }
 
-#sideMenu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #333;
-  width: 220px;
-  height: 100vh;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  padding-top: 60px;
-  z-index: 999;
+input, select {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #555;
 }
 
-#sideMenu ul {
+button {
+  background-color: #FFD700;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #e6c200;
+}
+
+/* Estilo para o carrinho de compras */
+#carrinho ul {
   list-style: none;
   padding: 0;
 }
 
-#sideMenu ul li {
-  padding: 15px;
-  border-bottom: 1px solid #444;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.3s;
+#carrinho li {
+  background-color: #333;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-#sideMenu ul li:hover {
-  background: #555;
-}
-
-#sideMenu.show {
-  transform: translateX(0);
-}
-
-main {
-  padding: 20px;
-}
-
-.aba {
-  display: none;
-}
-
-.aba.ativa {
-  display: block;
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.zap-button {
-  display: block;
-  width: 90%;
-  max-width: 400px;
-  margin: 30px auto;
-  padding: 15px;
-  background: #25d366;
-  color: white;
-  text-align: center;
-  font-size: 22px;
+#carrinho li::before {
+  content: attr(data-id);
   font-weight: bold;
-  text-decoration: none;
-  border-radius: 12px;
-  transition: background 0.3s, transform 0.2s;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: #FFD700;
+  margin-right: 10px;
 }
 
-.zap-button:hover {
-  background: #1ebc59;
-  transform: scale(1.03);
+/* Estilo dos cards dos hambúrgueres */
+.card {
+  display: flex;
+  align-items: flex-start;
+  background-color: #222;
+  border: 1px solid #FFD700;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  gap: 15px;
 }
 
-footer {
-  background: linear-gradient(45deg, #ffcc00, #ffaa00);
+.card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card .info {
+  flex-grow: 1;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card p {
+  font-size: 0.9em;
+  color: #ccc;
+  margin: 5px 0;
+}
+
+.card .preco {
+  font-size: 1.2em;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* Botões pequenos e lado a lado */
+.btn-group-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.btn-group-inline button {
+  background-color: #FFD700;
   color: #000;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9em;
+  padding: 5px 8px;
+  cursor: pointer;
+  min-width: 30px;
   text-align: center;
-  padding: 20px;
-  font-size: 14px;
 }
 
-@media (max-width: 600px) {
-  h1 {
-    font-size: 2em;
+.btn-group-inline button:hover {
+  background-color: #e6c200;
+}
+
+.btn-group-inline button:active {
+  transform: scale(0.95);
+  background-color: #c9a700;
+}
+
+/* Estilo da seção de adicionais */
+#adicionais-container {
+  margin-top: 20px;
+  background-color: #1c1c1c;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #FFD700;
+}
+
+#adicionais-container h3 {
+  font-size: 1.5em;
+  color: #FFD700;
+  margin-bottom: 15px;
+}
+
+#adicionais-container .adicional {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+#adicionais-container .adicional label {
+  color: #fff;
+  font-size: 1.1em;
+  margin-right: 10px;
+}
+
+#adicionais-container .adicional select {
+  background-color: #222;
+  color: #fff;
+  padding: 5px;
+  border: 1px solid #555;
+  border-radius: 5px;
+}
+
+#adicionais-container .adicional button {
+  background-color: #FFD700;
+  color: #000;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#adicionais-container .adicional button:hover {
+  background-color: #e6c200;
+}
+
+#adicionais-container .adicional button.remove {
+  background-color: red;
+}
+
+#adicionais-container .adicional button.remove:hover {
+  background-color: #d13d3d;
+}
+
+#adicionais-container .adicional button:active {
+  transform: scale(0.95);
+  background-color: #c9a700;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
   }
-  .zap-button {
-    font-size: 18px;
+
+  main, aside {
+    width: 100%;
   }
+
+  .card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+/* Estilo adicional bonito */
+.adicionais-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.adicional-card {
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  width: 160px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+}
+
+.adicional-card:hover {
+  transform: scale(1.05);
+}
+
+.adicional-card button {
+  background: #ffcc00;
+  color: #000;
+  border: none;
+  margin: 5px 5px 0;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
 }
