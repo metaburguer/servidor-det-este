@@ -1,85 +1,138 @@
-// script.js
-document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.getElementById("menuToggle");
-  const sideMenu = document.getElementById("sideMenu");
-  const sections = document.querySelectorAll(".aba");
-  const menuItems = document.querySelectorAll("#sideMenu ul li");
+// JUNÇÃO FUNCIONAL DO SCRIPT PRINCIPAL COM CONTROLE DE ETAPAS
 
-  menuToggle.addEventListener("click", () => {
-    sideMenu.classList.toggle("show");
-  });
+let carrinho = [];
+let adicionaisPorLanche = {};
+const precosAdicionais = {
+  'cheddar': 2.00,
+  'bacon': 3.00,
+  'mussarela': 2.50
+};
 
-  menuItems.forEach(item => {
-    item.addEventListener("click", () => {
-      const section = document.getElementById(item.dataset.section);
-      if (section) {
-        sections.forEach(sec => sec.classList.remove("ativa"));
-        section.classList.add("ativa");
-        sideMenu.classList.remove("show");
-      }
+function atualizarCarrinho() {
+  const lista = document.getElementById('lista-carrinho');
+  const resumoTotal = document.getElementById('resumo-total');
+  lista.innerHTML = '';
+  let total = 0;
+
+  carrinho.forEach((item, index) => {
+    let adicionais = adicionaisPorLanche[index] || [];
+    let adicionaisHtml = '';
+    let totalAdicionais = 0;
+    adicionais.forEach(ad => {
+      const nomeFormatado = ad.toLowerCase(); // padroniza para minúsculo
+      const precoAd = precosAdicionais[nomeFormatado] || 0;
+      adicionaisHtml += `<li style="margin-left: 20px; font-size: 0.9em">+ ${ad} - R$ ${precoAd.toFixed(2)}</li>`;
+      totalAdicionais += precoAd;
     });
+
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>#${index + 1}</strong> - ${item.nome} - R$ ${(item.preco + totalAdicionais).toFixed(2)}
+                    <button onclick="removerLanchePorIndex(${index})">×</button>
+                    <ul>${adicionaisHtml}</ul>`;
+    lista.appendChild(li);
+    total += item.preco + totalAdicionais;
   });
 
-  // Imagens com animação de entrada
-  const imgs = document.querySelectorAll("section img");
-  imgs.forEach((img, i) => {
-    img.style.opacity = 0;
-    img.style.transform = "translateY(50px)";
-    setTimeout(() => {
-      img.style.transition = "0.8s ease";
-      img.style.opacity = 1;
-      img.style.transform = "translateY(0)";
-    }, 300 * i);
-  });
+  resumoTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
+}
 
-  // Botão WhatsApp animação
-  const zap = document.querySelector(".zap-button");
-  if (zap) {
-    zap.addEventListener("click", () => {
-      zap.textContent = "Abrindo WhatsApp...";
-      setTimeout(() => {
-        zap.textContent = "Finalizar Pedido no WhatsApp";
-      }, 3000);
-    });
+function adicionarLanche(nome, preco) {
+  carrinho.push({ nome, preco });
+  atualizarCarrinho();
+}
+
+function removerLanche(nome) {
+  const index = carrinho.findIndex(item => item.nome === nome);
+  if (index > -1) {
+    carrinho.splice(index, 1);
+    delete adicionaisPorLanche[index];
+    atualizarCarrinho();
   }
+}
 
-  // Proteção contra redirecionamento automático
-  const bloquearRedirects = () => {
-    let redirDetectado = false;
-    Object.defineProperty(window, 'location', {
-      set(value) {
-        redirDetectado = true;
-        console.warn("Tentativa de redirecionamento bloqueada: " + value);
-      }
-    });
+function removerLanchePorIndex(index) {
+  carrinho.splice(index, 1);
+  delete adicionaisPorLanche[index];
+  atualizarCarrinho();
+}
 
-    window.open = function () {
-      redirDetectado = true;
-      console.warn("Tentativa de abrir janela bloqueada.");
-      return null;
-    };
+function adicionarAdicional(nome) {
+  const id = parseInt(document.getElementById('idLancheAdicional').value) - 1;
+  if (!carrinho[id]) return alert('Lanche não encontrado!');
+  adicionaisPorLanche[id] = adicionaisPorLanche[id] || [];
+  adicionaisPorLanche[id].push(nome);
+  atualizarCarrinho();
+}
 
-    const originalTimeout = window.setTimeout;
-    window.setTimeout = function (fn, delay) {
-      if (typeof fn === "string" && (fn.includes("location") || fn.includes("open"))) {
-        redirDetectado = true;
-        console.warn("Redirecionamento via setTimeout bloqueado.");
-        return;
-      }
-      return originalTimeout(fn, delay);
-    };
+function removerAdicional(nome) {
+  const id = parseInt(document.getElementById('idLancheAdicional').value) - 1;
+  if (!carrinho[id] || !adicionaisPorLanche[id]) return;
+  const index = adicionaisPorLanche[id].indexOf(nome);
+  if (index > -1) adicionaisPorLanche[id].splice(index, 1);
+  atualizarCarrinho();
+}
 
-    setInterval(() => {
-      document.querySelectorAll("iframe").forEach(iframe => {
-        if (!iframe.src.includes("trusted") && !iframe.src.includes("youtube")) {
-          iframe.remove();
-          console.warn("Iframe suspeito removido.");
-        }
-      });
-    }, 1000);
-
-    if (redirDetectado) alert("Tentativa de redirecionamento bloqueada!");
-  };
-
-  bloquearRedirects();
+// Event Listeners para Adicionais
+Array.from(document.getElementsByClassName('add-adicional')).forEach(btn => {
+  btn.addEventListener('click', () => {
+    const nome = btn.parentElement.dataset.nome;
+    adicionarAdicional(nome);
+  });
 });
+
+Array.from(document.getElementsByClassName('remove-adicional')).forEach(btn => {
+  btn.addEventListener('click', () => {
+    const nome = btn.parentElement.dataset.nome;
+    removerAdicional(nome);
+  });
+});
+
+// CONTROLE DE ETAPAS
+function mostrarEtapa(id) {
+  document.querySelectorAll('.etapa').forEach(etapa => etapa.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+}
+
+// Etapas - avançar e voltar
+document.getElementById('avancar1').addEventListener('click', () => mostrarEtapa('etapaAdicionais'));
+document.getElementById('voltarAdicionais').addEventListener('click', () => mostrarEtapa('etapa1'));
+document.getElementById('avancarAdicionais').addEventListener('click', () => mostrarEtapa('etapa2'));
+document.getElementById('voltar1').addEventListener('click', () => mostrarEtapa('etapaAdicionais'));
+document.getElementById('avancar2').addEventListener('click', () => mostrarEtapa('etapa3'));
+document.getElementById('voltar2').addEventListener('click', () => mostrarEtapa('etapa2'));
+document.getElementById('avancar3').addEventListener('click', () => mostrarEtapa('etapa4'));
+document.getElementById('voltar3').addEventListener('click', () => mostrarEtapa('etapa3'));
+
+// Finalizar
+function finalizarPedido() {
+  let mensagem = '🍔 *Pedido Meta Burguer* 🍔\n\n';
+  let total = 0;
+
+  carrinho.forEach((item, index) => {
+    const adicionais = adicionaisPorLanche[index] || [];
+    let totalAdicionais = 0;
+    mensagem += `🔸 *#${index + 1}* - ${item.nome}\n`;
+    adicionais.forEach(ad => {
+      const nomeFormatado = ad.toLowerCase();
+      const precoAd = precosAdicionais[nomeFormatado] || 0;
+      mensagem += `   ➕ ${ad} - R$ ${precoAd.toFixed(2)}\n`;
+      totalAdicionais += precoAd;
+    });
+    total += item.preco + totalAdicionais;
+  });
+
+  mensagem += `\n💵 *Total:* R$ ${total.toFixed(2)}\n`;
+
+  mensagem += '\n📍 *Endereço:*\n';
+  mensagem += `🏠 Rua: ${document.getElementById('rua').value}\n`;
+  mensagem += `🏡 Número: ${document.getElementById('numero').value}\n`;
+  mensagem += `🏙️ Bairro: ${document.getElementById('bairro').value}\n`;
+  mensagem += `📝 Complemento: ${document.getElementById('complemento').value}\n`;
+
+  mensagem += `\n💳 *Pagamento:* ${document.getElementById('pagamento').value}\n`;
+
+  const url = `https://wa.me/5531995080787?text=${encodeURIComponent(mensagem)}`;
+  window.open(url, '_blank');
+}
+
+document.getElementById('finalizar').addEventListener('click', finalizarPedido);
