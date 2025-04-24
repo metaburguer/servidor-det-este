@@ -1,71 +1,155 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Meta Burguer</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="menu-icon" id="menuToggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
     <h1>Meta Burguer</h1>
-    <p>Atendimento de 19h às 2h | Viçosa - MG</p>
   </header>
 
-  <nav id="sideMenu" class="hidden">
-    <ul>
-      <li data-section="pedido">Fazer Pedido</li>
-      <li data-section="hamburguer">Hambúrguer</li>
-      <li data-section="hotdog">Cachorro-Quente</li>
-      <li data-section="adicionais">Adicionais</li>
-      <li data-section="pagamento">Pagamento</li>
-    </ul>
-  </nav>
+  <div class="container">
+    <main>
+      <!-- Etapa 1: Escolha -->
+      <section id="etapa1" class="etapa active">
+        <h2>Escolha seu hambúrguer</h2>
+        <div id="menu">
+          <!-- Card dos hambúrgueres -->
+          <div class="card" data-nome="Smash Clássico" data-preco="25.00">
+            <img src="imagens/hamburguer.jpg" alt="Smash Clássico">
+            <div class="info">
+              <h3 class="nome">Smash Clássico</h3>
+              <p class="ingredientes">Pão, carne, queijo cheddar, alface, molho especial.</p>
+              <div class="preco">R$ 25,00</div>
+              <div class="acoes">
+                <button class="adicionar" onclick="adicionarLanche('Smash Clássico', 25.00)">+</button>
+                <button class="remover" onclick="removerLanche('Smash Clássico', 25.00)">−</button>
+              </div>
+            </div>
+          </div>
 
-  <main>
-    <section id="pedido" class="aba ativa">
-      <h2>Fazer Pedido</h2>
-      <p>Escolha seu lanche favorito e comece seu pedido!</p>
-    </section>
+          <div class="card" data-nome="Cheeseburger" data-preco="22.00">
+            <img src="imagens/hamburguer.jpg" alt="Cheeseburger">
+            <div class="info">
+              <h3 class="nome">Cheeseburger</h3>
+              <p class="ingredientes">Pão, carne, queijo cheddar, ketchup, mostarda.</p>
+              <div class="preco">R$ 22,00</div>
+              <div class="acoes">
+                <button class="adicionar" onclick="adicionarLanche('Cheeseburger', 22.00)">+</button>
+                <button class="remover" onclick="removerLanche('Cheeseburger', 22.00)">−</button>
+              </div>
+            </div>
+          </div>
 
-    <section id="hamburguer" class="aba">
-      <h2>Hambúrguer</h2>
-      <img src="imagens/hamburguer.jpg" alt="Cardápio hambúrguer" />
-    </section>
+          <div class="card" data-nome="Cheesebacon" data-preco="27.00">
+            <img src="imagens/hamburguer.jpg" alt="Cheesebacon">
+            <div class="info">
+              <h3 class="nome">Cheesebacon</h3>
+              <p class="ingredientes">Pão, carne, queijo cheddar, bacon crocante, molho barbecue.</p>
+              <div class="preco">R$ 27,00</div>
+              <div class="acoes">
+                <button class="adicionar" onclick="adicionarLanche('Cheesebacon', 27.00)">+</button>
+                <button class="remover" onclick="removerLanche('Cheesebacon', 27.00)">−</button>
+              </div>
+            </div>
+          </div>
 
-    <section id="hotdog" class="aba">
-      <h2>Cachorro-Quente</h2>
-      <img src="imagens/hotdog.jpg" alt="Cardápio cachorro-quente" />
-    </section>
+          <div class="card" data-nome="Cheese Tudo" data-preco="30.00">
+            <img src="imagens/hamburguer.jpg" alt="Cheese Tudo">
+            <div class="info">
+              <h3 class="nome">Cheese Tudo</h3>
+              <p class="ingredientes">Pão, carne, queijo cheddar, queijo mussarela, bacon, alface, molho especial.</p>
+              <div class="preco">R$ 30,00</div>
+              <div class="acoes">
+                <button class="adicionar" onclick="adicionarLanche('Cheese Tudo', 30.00)">+</button>
+                <button class="remover" onclick="removerLanche('Cheese Tudo', 30.00)">−</button>
+              </div>
+            </div>
+          </div>
 
-    <section id="adicionais" class="aba">
-      <h2>Adicionais</h2>
-      <p>Adicione bacon, queijo extra, molhos especiais e muito mais!</p>
-    </section>
+          <div class="card" data-nome="Hambúrguer Vegano" data-preco="28.00">
+            <img src="imagens/hamburguer.jpg" alt="Hambúrguer Vegano">
+            <div class="info">
+              <h3 class="nome">Hambúrguer Vegano</h3>
+              <p class="ingredientes">Pão integral, hambúrguer de grão-de-bico, alface, tomate, molho de mostarda e mel.</p>
+              <div class="preco">R$ 28,00</div>
+              <div class="acoes">
+                <button class="adicionar" onclick="adicionarLanche('Hambúrguer Vegano', 28.00)">+</button>
+                <button class="remover" onclick="removerLanche('Hambúrguer Vegano', 28.00)">−</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button id="avancar1">Avançar</button>
+      </section>
 
-    <section id="pagamento" class="aba">
-      <h2>Pagamento</h2>
-      <p>Escolha a forma de pagamento:</p>
-      <ul>
-        <li>Pix</li>
-        <li>Cartão de Crédito</li>
-        <li>Dinheiro</li>
-      </ul>
-      <a class="zap-button" href="https://wa.me/5531995080787" target="_blank">
-        Finalizar Pedido no WhatsApp
-      </a>
-    </section>
-  </main>
+      <!-- Etapa 2: Adicionais -->
+      <section id="etapaAdicionais" class="etapa hidden">
+        <h2>Escolha adicionais</h2>
+        <input type="number" id="idLancheAdicional" placeholder="Digite o número do lanche" min="1">
+        <div id="adicionais-container">
+          <div class="adicional" data-nome="Cheddar">
+            <span>Cheddar</span>
+            <button class="add-adicional">+</button>
+            <button class="remove-adicional">−</button>
+          </div>
+          <div class="adicional" data-nome="Bacon">
+            <span>Bacon</span>
+            <button class="add-adicional">+</button>
+            <button class="remove-adicional">−</button>
+          </div>
+          <div class="adicional" data-nome="Mussarela">
+            <span>Mussarela</span>
+            <button class="add-adicional">+</button>
+            <button class="remove-adicional">−</button>
+          </div>
+        </div>
+        <button id="voltarAdicionais">Voltar</button>
+        <button id="avancarAdicionais">Avançar</button>
+      </section>
 
-  <footer>
-    <p>Siga no Instagram: @metta_burguer</p>
-    <p>&copy; 2025 Meta Burguer</p>
-  </footer>
+      <!-- Etapa 3: Endereço -->
+      <section id="etapa2" class="etapa hidden">
+        <h2>Endereço de entrega</h2>
+        <input type="text" id="rua" placeholder="Rua">
+        <input type="text" id="numero" placeholder="Número">
+        <input type="text" id="bairro" placeholder="Bairro">
+        <input type="text" id="complemento" placeholder="Complemento (opcional)">
+        <button id="voltar1">Voltar</button>
+        <button id="avancar2">Avançar</button>
+      </section>
+
+      <!-- Etapa 4: Pagamento -->
+      <section id="etapa3" class="etapa hidden">
+        <h2>Forma de pagamento</h2>
+        <select id="pagamento">
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="Cartão">Cartão</option>
+          <option value="Pix">Pix</option>
+        </select>
+        <button id="voltar2">Voltar</button>
+        <button id="avancar3">Avançar</button>
+      </section>
+
+      <!-- Etapa 5: Finalizar -->
+      <section id="etapa4" class="etapa hidden">
+        <h2>Resumo do pedido</h2>
+        <p>Revise seu pedido e finalize:</p>
+        <button id="voltar3">Voltar</button>
+        <button id="finalizar">Finalizar Pedido via WhatsApp</button>
+      </section>
+    </main>
+
+    <!-- Carrinho -->
+    <aside id="carrinho">
+      <h3>Seu carrinho</h3>
+      <ul id="lista-carrinho"></ul>
+      <p id="resumo-total">Total: R$ 0,00</p>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
