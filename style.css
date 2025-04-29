@@ -15,7 +15,7 @@ header {
   color: #FFD700;
 }
 
-/* Container principal para flexbox */
+/* Container principal */
 .container {
   display: flex;
   max-width: 1200px;
@@ -40,16 +40,19 @@ h2, h3 {
   color: #FFD700;
 }
 
-/* Estilo para as etapas de navegação */
+/* Estilo para as etapas */
 .etapa {
   margin-bottom: 20px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .hidden {
   display: none;
+  opacity: 0;
 }
 
-/* Estilo para os inputs, selects e botões */
+/* Inputs, selects e botões */
 input, select, button {
   display: block;
   margin: 10px 0;
@@ -77,7 +80,7 @@ button:hover {
   background-color: #e6c200;
 }
 
-/* Estilo para o carrinho de compras */
+/* Carrinho */
 #carrinho ul {
   list-style: none;
   padding: 0;
@@ -88,20 +91,9 @@ button:hover {
   padding: 10px;
   margin: 5px 0;
   border-radius: 5px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }
 
-#carrinho li::before {
-  content: attr(data-id);
-  font-weight: bold;
-  color: #FFD700;
-  margin-right: 10px;
-}
-
-/* Estilo dos cards dos hambúrgueres */
+/* Cards dos hambúrgueres */
 .card {
   display: flex;
   align-items: flex-start;
@@ -127,12 +119,6 @@ button:hover {
 .card h3 {
   margin: 0;
   font-size: 1.3em;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .card p {
@@ -144,105 +130,62 @@ button:hover {
 .card .preco {
   font-size: 1.2em;
   font-weight: bold;
-  white-space: nowrap;
 }
 
-/* Botões pequenos e lado a lado */
-.btn-group-inline {
+/* Ações dos hambúrgueres */
+.acoes {
   display: flex;
-  flex-wrap: wrap;
   gap: 5px;
   margin-top: 10px;
 }
 
-.btn-group-inline button {
-  background-color: #FFD700;
-  color: #000;
-  border: none;
-  border-radius: 4px;
-  font-size: 0.9em;
-  padding: 5px 8px;
-  cursor: pointer;
-  min-width: 30px;
-  text-align: center;
-}
-
-.btn-group-inline button:hover {
-  background-color: #e6c200;
-}
-
-.btn-group-inline button:active {
-  transform: scale(0.95);
-  background-color: #c9a700;
-}
-
-/* Estilo da seção de adicionais */
+/* Área dos adicionais */
 #adicionais-container {
   margin-top: 20px;
   background-color: #1c1c1c;
   padding: 20px;
   border-radius: 10px;
   border: 1px solid #FFD700;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-#adicionais-container h3 {
-  font-size: 1.5em;
-  color: #FFD700;
-  margin-bottom: 15px;
-}
-
-#adicionais-container .adicional {
+.adicional {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #333;
   padding: 10px;
-  margin-bottom: 10px;
   border-radius: 5px;
 }
 
-#adicionais-container .adicional label {
-  color: #fff;
-  font-size: 1.1em;
-  margin-right: 10px;
+.adicional-info {
+  font-size: 1em;
+  color: #FFD700;
 }
 
-#adicionais-container .adicional select {
-  background-color: #222;
-  color: #fff;
-  padding: 5px;
-  border: 1px solid #555;
-  border-radius: 5px;
+.adicional-botoes {
+  display: flex;
+  gap: 5px;
 }
 
-#adicionais-container .adicional button {
+.adicional-botoes button {
   background-color: #FFD700;
   color: #000;
+  border: none;
   padding: 5px 10px;
   border-radius: 5px;
-  border: none;
+  font-size: 1em;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-#adicionais-container .adicional button:hover {
+.adicional-botoes button:hover {
   background-color: #e6c200;
 }
 
-#adicionais-container .adicional button.remove {
-  background-color: red;
-}
-
-#adicionais-container .adicional button.remove:hover {
-  background-color: #d13d3d;
-}
-
-#adicionais-container .adicional button:active {
-  transform: scale(0.95);
-  background-color: #c9a700;
-}
-
-/* Responsividade para telas menores */
+/* Responsividade para celular */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -255,40 +198,16 @@ button:hover {
 
   .card {
     flex-direction: column;
+    align-items: center;
     text-align: center;
   }
-}
-/* Estilo adicional bonito */
-.adicionais-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  padding: 20px;
-}
 
-.adicional-card {
-  background: #1a1a1a;
-  color: #fff;
-  border-radius: 12px;
-  padding: 15px;
-  width: 160px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease;
-}
+  .card img {
+    width: 100%;
+    height: auto;
+  }
 
-.adicional-card:hover {
-  transform: scale(1.05);
-}
-
-.adicional-card button {
-  background: #ffcc00;
-  color: #000;
-  border: none;
-  margin: 5px 5px 0;
-  padding: 5px 10px;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
+  .acoes {
+    justify-content: center;
+  }
 }
