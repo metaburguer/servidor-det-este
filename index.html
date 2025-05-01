@@ -12,105 +12,259 @@
 
   <div class="container">
     <main>
-      <!-- Etapa 1: Escolha -->
+      <!-- ETAPA 1: LANCHES -->
       <section id="etapa1" class="etapa active">
-        <h2>Escolha seu hambúrguer</h2>
+        <h2>Escolha seu lanche</h2>
         <div id="menu">
-          <!-- Card dos hambúrgueres -->
-          <div class="card" data-nome="Smash Clássico" data-preco="25.00">
-            <img src="imagens/hamburguer.jpg" alt="Smash Clássico">
+
+          <!-- HAMBÚRGUERES -->
+          <h3>Hambúrgueres</h3>
+          <div class="card" data-nome="Burguer Clássico" data-preco="14.00">
+            <img src="imagens/hamburguer.jpg" alt="Burguer Clássico">
             <div class="info">
-              <h3 class="nome">Smash Clássico</h3>
-              <p class="ingredientes">Pão, carne, queijo cheddar, alface, molho especial.</p>
-              <div class="preco">R$ 25,00</div>
+              <h3>Burguer Clássico</h3>
+              <p>Pão, bife, queijo, molho, alface, tomate, milho e batata.</p>
+              <div class="preco">R$ 14,00</div>
               <div class="acoes">
-                <button class="adicionar" onclick="adicionarLanche('Smash Clássico', 25.00)">+</button>
-                <button class="remover" onclick="removerLanche('Smash Clássico', 25.00)">−</button>
+                <button onclick="adicionarLanche('Burguer Clássico', 14.00)">+</button>
+                <button onclick="removerLanche('Burguer Clássico', 14.00)">−</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-nome="Burguer Mix" data-preco="20.99">
+            <img src="imagens/hamburguer.jpg" alt="Burguer Mix">
+            <div class="info">
+              <h3>Burguer Mix</h3>
+              <p>Pão, bife, queijo, ovo, presunto, molho, alface, tomate e batata palha.</p>
+              <div class="preco">R$ 20,99</div>
+              <div class="acoes">
+                <button onclick="adicionarLanche('Burguer Mix', 20.99)">+</button>
+                <button onclick="removerLanche('Burguer Mix', 20.99)">−</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-nome="X-Bacon" data-preco="21.50">
+            <img src="imagens/hamburguer.jpg" alt="X-Bacon">
+            <div class="info">
+              <h3>X-Bacon</h3>
+              <p>Pão, bife, bacon, queijo, batata, milho e salada.</p>
+              <div class="preco">R$ 21,50</div>
+              <div class="acoes">
+                <button onclick="adicionarLanche('X-Bacon', 21.50)">+</button>
+                <button onclick="removerLanche('X-Bacon', 21.50)">−</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-nome="Triplo Queijo" data-preco="22.90">
+            <img src="imagens/hamburguer.jpg" alt="Triplo Queijo">
+            <div class="info">
+              <h3>Triplo Queijo</h3>
+              <p>Pão, bife, mussarela, cheddar, catupiry, calabresa, milho e salada.</p>
+              <div class="preco">R$ 22,90</div>
+              <div class="acoes">
+                <button onclick="adicionarLanche('Triplo Queijo', 22.90)">+</button>
+                <button onclick="removerLanche('Triplo Queijo', 22.90)">−</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-nome="Burguer Real" data-preco="24.00">
+            <img src="imagens/hamburguer.jpg" alt="Burguer Real">
+            <div class="info">
+              <h3>Burguer Real</h3>
+              <p>Pão, bife, bacon, queijo, ovo, alface, tomate, batata, molho especial e catupiry.</p>
+              <div class="preco">R$ 24,00</div>
+              <div class="acoes">
+                <button onclick="adicionarLanche('Burguer Real', 24.00)">+</button>
+                <button onclick="removerLanche('Burguer Real', 24.00)">−</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-nome="Burguer completo" data-preco="26.90">
+            <img src="imagens/hamburguer.jpg" alt="Burguer completo">
+            <div class="info">
+              <h3>Burguer completo</h3>
+              <p>Pão, bife, 2 fatias de queijo, 2 ovos, salada, milho, molho especial e molho verde.</p>
+              <div class="preco">R$ 26,90</div>
+              <div class="acoes">
+                <button onclick="adicionarLanche('Burguer completo', 26.90)">+</button>
+                <button onclick="removerLanche('Burguer completo', 26.90)">−</button>
+              </div>
+            </div>
+          </div>
+                    <div class="card" data-nome="Burguer Supremo" data-preco="32.00">
+            <img src="imagens/hamburguer.jpg" alt="Burguer Supremo">
+            <div class="info">
+              <h3>Burguer Supremo</h3>
+              <p>Pão, bife, bacon, queijo, ovo, alface, tomate, batata, molho especial, catupiry, presunto e calabresa.</p>
+              <div class="preco">R$ 32,00</div>
+              <div class="acoes">
+                <button onclick="adicionarLanche('Burguer Supremo', 32.00)">+</button>
+                <button onclick="removerLanche('Burguer Supremo', 32.00)">−</button>
+              </div>
+            </div>
+          </div>
+                    <div class="card" data-nome="X-Muntueira" data-preco="40.00">
+            <img src="imagens/hamburguer.jpg" alt="X-Muntueira">
+            <div class="info">
+              <h3>X-Muntueira</h3>
+              <p>Pão, 2 bifes, 2 ovos, queijo em dobro, presunto em dobro, molho, milho, bacon, alface, tomate, milho e batata palha.</p>
+              <div class="preco">R$ 40,00</div>
+              <div class="acoes">
+                <button onclick="adicionarLanche('X-Muntueira', 40.00)">+</button>
+                <button onclick="removerLanche('X-Muntueira', 40.00)">−</button>
               </div>
             </div>
           </div>
 
-          <div class="card" data-nome="Cheeseburger" data-preco="22.00">
-            <img src="imagens/hamburguer.jpg" alt="Cheeseburger">
+          <!-- HOT DOGS -->
+          <h3>Cachorros-quentes</h3>
+          <div class="card" data-nome="Dog Simples" data-preco="7.99">
+            <img src="imagens/hamburguer.jpg" alt="Dog Simples">
             <div class="info">
-              <h3 class="nome">Cheeseburger</h3>
-              <p class="ingredientes">Pão, carne, queijo cheddar, ketchup, mostarda.</p>
-              <div class="preco">R$ 22,00</div>
+              <h3>Dog Simples</h3>
+              <p>Pão, salsicha, molho artesanal, milho, batata palha.</p>
+              <div class="preco">R$ 7,99</div>
               <div class="acoes">
-                <button class="adicionar" onclick="adicionarLanche('Cheeseburger', 22.00)">+</button>
-                <button class="remover" onclick="removerLanche('Cheeseburger', 22.00)">−</button>
+                <button onclick="adicionarLanche('Dog Simples', 7.99)">+</button>
+                <button onclick="removerLanche('Dog Simples', 7.99)">−</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-nome="Dog Completo" data-preco="13.00">
+            <img src="imagens/hamburguer.jpg" alt="Dog Completo">
+            <div class="info">
+              <h3>Dog Completo</h3>
+              <p>Pão, salsicha, molho artesanal, milho, batata palha, bacon, queijo.</p>
+              <div class="preco">R$ 13,00</div>
+              <div class="acoes">
+                <button onclick="adicionarLanche('Dog Completo', 13.00)">+</button>
+                <button onclick="removerLanche('Dog Completo', 13.00)">−</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-nome="Mega Dog" data-preco="15.99">
+            <img src="imagens/hamburguer.jpg" alt="Mega Dog">
+            <div class="info">
+              <h3>Mega Dog</h3>
+              <p>Pão, 2 salsicha, molho artesanal, milho, batata palha, bacon, queijo, calabresa e molho especial meta.</p>
+              <div class="preco">R$ 15,99</div>
+              <div class="acoes">
+                <button onclick="adicionarLanche('Mega Dog', 15.99)">+</button>
+                <button onclick="removerLanche('Mega Dog', 15.99)">−</button>
               </div>
             </div>
           </div>
 
-          <div class="card" data-nome="Cheesebacon" data-preco="27.00">
-            <img src="imagens/hamburguer.jpg" alt="Cheesebacon">
+          <!-- PRENSADOS -->
+          <h3>Prensados</h3>
+          <div class="card" data-nome="Prensado Simples" data-preco="12.50">
+            <img src="imagens/hamburguer.jpg" alt="Prensado Simples">
             <div class="info">
-              <h3 class="nome">Cheesebacon</h3>
-              <p class="ingredientes">Pão, carne, queijo cheddar, bacon crocante, molho barbecue.</p>
-              <div class="preco">R$ 27,00</div>
+              <h3>Prensado Simples</h3>
+              <p>Pão, salsicha, batata, milho e cheddar.</p>
+              <div class="preco">R$ 12,50</div>
               <div class="acoes">
-                <button class="adicionar" onclick="adicionarLanche('Cheesebacon', 27.00)">+</button>
-                <button class="remover" onclick="removerLanche('Cheesebacon', 27.00)">−</button>
+                <button onclick="adicionarLanche('Prensado Simples', 12.50)">+</button>
+                <button onclick="removerLanche('Prensado Simples', 12.50)">−</button>
               </div>
             </div>
           </div>
-
-          <div class="card" data-nome="Cheese Tudo" data-preco="30.00">
-            <img src="imagens/hamburguer.jpg" alt="Cheese Tudo">
+          <div class="card" data-nome="Prensado Master" data-preco="17.90">
+            <img src="imagens/hamburguer.jpg" alt="Prensado Master">
             <div class="info">
-              <h3 class="nome">Cheese Tudo</h3>
-              <p class="ingredientes">Pão, carne, queijo cheddar, queijo mussarela, bacon, alface, molho especial.</p>
-              <div class="preco">R$ 30,00</div>
+              <h3>Prensado Master</h3>
+              <p>Pão, salsicha, batata, bacon, tomate, queijo, milho, molho verde e molho de bacon.</p>
+              <div class="preco">R$ 17,90</div>
               <div class="acoes">
-                <button class="adicionar" onclick="adicionarLanche('Cheese Tudo', 30.00)">+</button>
-                <button class="remover" onclick="removerLanche('Cheese Tudo', 30.00)">−</button>
+                <button onclick="adicionarLanche('Prensado Master', 17.90)">+</button>
+                <button onclick="removerLanche('Prensado Master', 17.90)">−</button>
               </div>
             </div>
           </div>
-
-          <div class="card" data-nome="Hambúrguer Vegano" data-preco="28.00">
-            <img src="imagens/hamburguer.jpg" alt="Hambúrguer Vegano">
+          <div class="card" data-nome="Prensado Turbo" data-preco="19.90">
+            <img src="imagens/hamburguer.jpg" alt="Prensado Turbo">
             <div class="info">
-              <h3 class="nome">Hambúrguer Vegano</h3>
-              <p class="ingredientes">Pão integral, hambúrguer de grão-de-bico, alface, tomate, molho de mostarda e mel.</p>
-              <div class="preco">R$ 28,00</div>
+              <h3>Prensado Turbo</h3>
+              <p>Pão, 2 salsichas, batata, bacon, queijo, calabresa, maionese e molho de bacon.</p>
+              <div class="preco">R$ 19,90</div>
               <div class="acoes">
-                <button class="adicionar" onclick="adicionarLanche('Hambúrguer Vegano', 28.00)">+</button>
-                <button class="remover" onclick="removerLanche('Hambúrguer Vegano', 28.00)">−</button>
+                <button onclick="adicionarLanche('Prensado Turbo', 19.90)">+</button>
+                <button onclick="removerLanche('Prensado Turbo', 19.90)">−</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-nome="Prensado Supremo" data-preco="20.90">
+            <img src="imagens/hamburguer.jpg" alt="Prensado Supremo">
+            <div class="info">
+              <h3>Prensado Supremo</h3>
+              <p>Pão, salsicha, vinagrete, bacon, frango desfiado, maionese e molho de bacon.</p>
+              <div class="preco">R$ 20,90</div>
+              <div class="acoes">
+                <button onclick="adicionarLanche('Prensado Supremo', 20.90)">+</button>
+                <button onclick="removerLanche('Prensado Supremo', 20.90)">−</button>
               </div>
             </div>
           </div>
         </div>
         <button id="avancar1">Avançar</button>
       </section>
-
-      <!-- Etapa 2: Adicionais -->
+      <!-- ETAPA 2: ADICIONAIS -->
       <section id="etapaAdicionais" class="etapa hidden">
         <h2>Escolha adicionais</h2>
-        <input type="number" id="idLancheAdicional" placeholder="Digite o número do lanche" min="1">
+        <input type="number" id="idLancheAdicional" placeholder="Digite o número do lanche no carrinho" min="1">
         <div id="adicionais-container">
-          <div class="adicional" data-nome="Cheddar">
-            <span>Cheddar</span>
-            <button class="add-adicional">+</button>
-            <button class="remove-adicional">−</button>
-          </div>
-          <div class="adicional" data-nome="Bacon">
-            <span>Bacon</span>
-            <button class="add-adicional">+</button>
-            <button class="remove-adicional">−</button>
-          </div>
-          <div class="adicional" data-nome="Mussarela">
-            <span>Mussarela</span>
-            <button class="add-adicional">+</button>
-            <button class="remove-adicional">−</button>
-          </div>
+          <!-- Lista de 9 adicionais -->
+          <div class="adicional" data-nome="Bacon"><div class="adicional-info"><span>Bacon - R$ 5,00</span></div><div class="adicional-botoes"><button class="add-adicional">+</button><button class="remove-adicional">−</button></div></div>
+          <div class="adicional" data-nome="Queijo"><div class="adicional-info"><span>Queijo - R$ 2,00</span></div><div class="adicional-botoes"><button class="add-adicional">+</button><button class="remove-adicional">−</button></div></div>
+          <div class="adicional" data-nome="Calabresa"><div class="adicional-info"><span>Calabresa - R$ 3,00</span></div><div class="adicional-botoes"><button class="add-adicional">+</button><button class="remove-adicional">−</button></div></div>
+          <div class="adicional" data-nome="Vinagrete"><div class="adicional-info"><span>Vinagrete - R$ 3,00</span></div><div class="adicional-botoes"><button class="add-adicional">+</button><button class="remove-adicional">−</button></div></div>
+          <div class="adicional" data-nome="Tomate"><div class="adicional-info"><span>Tomate - R$ 2,00</span></div><div class="adicional-botoes"><button class="add-adicional">+</button><button class="remove-adicional">−</button></div></div>
+          <div class="adicional" data-nome="Milho"><div class="adicional-info"><span>Milho - R$ 3,00</span></div><div class="adicional-botoes"><button class="add-adicional">+</button><button class="remove-adicional">−</button></div></div>
+          <div class="adicional" data-nome="Cheddar"><div class="adicional-info"><span>Cheddar - R$ 5,00</span></div><div class="adicional-botoes"><button class="add-adicional">+</button><button class="remove-adicional">−</button></div></div>
+          <div class="adicional" data-nome="Frango desfiado"><div class="adicional-info"><span>Frango desfiado - R$ 5,00</span></div><div class="adicional-botoes"><button class="add-adicional">+</button><button class="remove-adicional">−</button></div></div>
+          <div class="adicional" data-nome="Salsicha"><div class="adicional-info"><span>Salsicha - R$ 2,00</span></div><div class="adicional-botoes"><button class="add-adicional">+</button><button class="remove-adicional">−</button></div></div>
         </div>
         <button id="voltarAdicionais">Voltar</button>
         <button id="avancarAdicionais">Avançar</button>
       </section>
+     <!-- ETAPA 3: BEBIDAS (sem input, itens normais) -->
+      <section id="etapaBebidas" class="etapa hidden">
+        <h2>Escolha sua bebida</h2>
+        <div id="bebidas-container">
+          <div class="bebida" data-nome="Coca-Cola 1 litro" data-preco="10.00">
+            <span class="bebida-info">Coca-Cola 1 litro - R$ 10,00</span>
+            <div class="bebida-botoes">
+              <button onclick="adicionarBebidaDireta('Coca-Cola 1 litro', 10.00)">+</button>
+              <button onclick="removerBebidaDireta('Coca-Cola 1 litro')">−</button>
+            </div>
+          </div>
+          <div class="bebida" data-nome="Coca-Cola 200 ml" data-preco="4.00">
+            <span class="bebida-info">Coca-Cola 200 ml - R$ 4,00</span>
+            <div class="bebida-botoes">
+              <button onclick="adicionarBebidaDireta('Coca-Cola 200 ml', 4.00)">+</button>
+              <button onclick="removerBebidaDireta('Coca-Cola 200 ml')">−</button>
+            </div>
+          </div>
+          <div class="bebida" data-nome="Coca-Cola 350 ml" data-preco="7.00">
+            <span class="bebida-info">Coca-Cola 350 ml - R$ 7,00</span>
+            <div class="bebida-botoes">
+              <button onclick="adicionarBebidaDireta('Coca-Cola 350 ml', 7.00)">+</button>
+              <button onclick="removerBebidaDireta('Coca-Cola 350 ml')">−</button>
+            </div>
+          </div>
+          <div class="bebida" data-nome="Guaraná 200 ml" data-preco="3.50">
+            <span class="bebida-info">Guaraná 200 ml - R$ 3,50</span>
+            <div class="bebida-botoes">
+              <button onclick="adicionarBebidaDireta('Guaraná 200 ml', 3.50)">+</button>
+              <button onclick="removerBebidaDireta('Guaraná 200 ml')">−</button>
+            </div>
+          </div>
+        </div>
+        <button id="voltarBebidas">Voltar</button>
+        <button id="avancarBebidas">Avançar</button>
+      </section>
 
-      <!-- Etapa 3: Endereço -->
+      <!-- ETAPA 4: ENDEREÇO -->
       <section id="etapa2" class="etapa hidden">
         <h2>Endereço de entrega</h2>
         <input type="text" id="rua" placeholder="Rua">
@@ -121,7 +275,7 @@
         <button id="avancar2">Avançar</button>
       </section>
 
-      <!-- Etapa 4: Pagamento -->
+      <!-- ETAPA 5: PAGAMENTO -->
       <section id="etapa3" class="etapa hidden">
         <h2>Forma de pagamento</h2>
         <select id="pagamento">
@@ -133,16 +287,16 @@
         <button id="avancar3">Avançar</button>
       </section>
 
-      <!-- Etapa 5: Finalizar -->
+      <!-- ETAPA 6: FINALIZAÇÃO -->
       <section id="etapa4" class="etapa hidden">
         <h2>Resumo do pedido</h2>
-        <p>Revise seu pedido e finalize:</p>
+        <p>Revise seu pedido antes de finalizar:</p>
         <button id="voltar3">Voltar</button>
         <button id="finalizar">Finalizar Pedido via WhatsApp</button>
       </section>
     </main>
 
-    <!-- Carrinho -->
+    <!-- CARRINHO FIXO -->
     <aside id="carrinho">
       <h3>Seu carrinho</h3>
       <ul id="lista-carrinho"></ul>
