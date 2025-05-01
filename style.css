@@ -1,4 +1,3 @@
-/* Estilo geral do corpo */
 body {
   font-family: Arial, sans-serif;
   background-color: #111;
@@ -7,7 +6,6 @@ body {
   padding: 0;
 }
 
-/* Cabeçalho */
 header {
   background-color: #000;
   padding: 20px;
@@ -15,7 +13,6 @@ header {
   color: #FFD700;
 }
 
-/* Container principal */
 .container {
   display: flex;
   max-width: 1200px;
@@ -33,14 +30,15 @@ aside {
   padding: 20px;
   border-radius: 10px;
   border: 1px solid #FFD700;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
 }
 
-/* Estilo de títulos */
 h2, h3 {
   color: #FFD700;
 }
 
-/* Estilo para as etapas */
 .etapa {
   margin-bottom: 20px;
   opacity: 1;
@@ -52,7 +50,6 @@ h2, h3 {
   opacity: 0;
 }
 
-/* Inputs, selects e botões */
 input, select, button {
   display: block;
   margin: 10px 0;
@@ -80,7 +77,6 @@ button:hover {
   background-color: #e6c200;
 }
 
-/* Carrinho */
 #carrinho ul {
   list-style: none;
   padding: 0;
@@ -93,7 +89,6 @@ button:hover {
   border-radius: 5px;
 }
 
-/* Cards dos hambúrgueres */
 .card {
   display: flex;
   align-items: flex-start;
@@ -132,15 +127,14 @@ button:hover {
   font-weight: bold;
 }
 
-/* Ações dos hambúrgueres */
 .acoes {
   display: flex;
   gap: 5px;
   margin-top: 10px;
 }
 
-/* Área dos adicionais */
-#adicionais-container {
+#adicionais-container,
+#bebidas-container {
   margin-top: 20px;
   background-color: #1c1c1c;
   padding: 20px;
@@ -151,7 +145,8 @@ button:hover {
   gap: 15px;
 }
 
-.adicional {
+.adicional,
+.bebida {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -160,17 +155,20 @@ button:hover {
   border-radius: 5px;
 }
 
-.adicional-info {
+.adicional-info,
+.bebida-info {
   font-size: 1em;
   color: #FFD700;
 }
 
-.adicional-botoes {
+.adicional-botoes,
+.bebida-botoes {
   display: flex;
   gap: 5px;
 }
 
-.adicional-botoes button {
+.adicional-botoes button,
+.bebida-botoes button {
   background-color: #FFD700;
   color: #000;
   border: none;
@@ -181,11 +179,12 @@ button:hover {
   transition: background-color 0.3s;
 }
 
-.adicional-botoes button:hover {
+.adicional-botoes button:hover,
+.bebida-botoes button:hover {
   background-color: #e6c200;
 }
 
-/* Responsividade para celular */
+/* RESPONSIVIDADE */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -209,5 +208,10 @@ button:hover {
 
   .acoes {
     justify-content: center;
+  }
+
+  aside {
+    position: static;
+    margin-top: 20px;
   }
 }
